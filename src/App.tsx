@@ -1,26 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import styled, { AnyStyledComponent } from "styled-components";
+import USMap from "./components/map/Map";
+import Nav from "./components/nav/Nav";
+const Layout: AnyStyledComponent = styled.div`
+  height: 100%;
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr;
+  grid-template-rows: 150px auto;
+  grid-template-areas:
+    "h"
+    "m";
+`;
 
-function App() {
+const Header: AnyStyledComponent = styled.div`
+  grid-area: h;
+`;
+const Map: AnyStyledComponent = styled.div`
+  grid-area: m;
+`;
+
+export default () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Layout>
+      <Header>
+        <Nav />
+      </Header>
+      <Map>
+        <USMap />
+      </Map>
+    </Layout>
   );
-}
-
-export default App;
+};
